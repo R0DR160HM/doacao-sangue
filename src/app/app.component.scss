@@ -1,0 +1,69 @@
+$nav-height: 56px;
+$side-width: 248px;
+
+
+nav {
+    // background-color: crimson;
+    height: $nav-height;
+    color: rgb(220, 20, 60);
+    position: sticky;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .3);
+}
+
+aside {
+    position: fixed;
+    height: calc(100vh - $nav-height);
+    background-color: rgb(126, 0, 0);
+    top: $nav-height;
+    transition: 200ms;
+    width: 0;
+    color: white;
+    ul {
+        display: none;
+    }
+    &.active {
+        width: $side-width;
+        display: block;
+        ul {
+            display: block;
+        }
+    }
+}
+
+button {
+    border: none;
+    background: none;
+    outline: none;
+    height: 100%;
+    color: crimson;
+}
+
+h1 {
+    width: 50%;
+    margin: 0;
+}
+
+strong {
+    font-size: 22px;
+}
+
+main {
+    position: fixed;
+    height: calc(100vh - $nav-height);
+    width: 100vw;
+    left: 0;
+    top: $nav-height;
+    transition: 200ms;
+    padding: 8px;
+    &.active {
+        width: calc(100vw - $side-width);
+        left: $side-width;
+    }
+}
+
+ul {
+    padding-left: 24px;
+    li {
+        margin-bottom: 24px;
+    }
+}

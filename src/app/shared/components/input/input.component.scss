@@ -1,0 +1,26 @@
+input, select {
+    padding: 8px;
+    border: solid 1px rgb(179, 179, 179);
+    border-radius: 5px;
+    outline: none;
+    width: 100%;
+    &:focus {
+        border: solid 1px gray;
+        box-shadow: 0 0px 5px 1px rgba(220, 20, 60, .3);
+    }
+}
+
+select {
+    height: 43px !important;
+}
+
+label {
+    display: block;
+    margin-bottom: 0;
+}
+
+div {
+    display: inline-block;
+    padding: 0;
+    width: 100%;
+}

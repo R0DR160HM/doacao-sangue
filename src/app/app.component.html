@@ -1,0 +1,35 @@
+<nav>
+  <button class="ml-2 cursor-pointer" (click)="showSidebar = !showSidebar">
+    <fa-icon [icon]="icons.bars" size="lg"></fa-icon>
+  </button>
+  <button>
+    <strong class="ml-2">DOE SANGUE</strong>
+  </button>
+</nav>
+
+<aside [ngClass]="{ 'active': showSidebar }">
+  <ul class="mt-5">
+    <li class="cursor-pointer" (click)="navigate('doar')">
+      <fa-icon [icon]="icons.userPlus" size="lg"></fa-icon>&nbsp;&nbsp;
+      <span>Cadastrar Doador</span>
+    </li>
+    <li class="cursor-pointer" (click)="navigate('retirar')">
+      <fa-icon [icon]="icons.userInjured" size="lg"></fa-icon>&nbsp;&nbsp;&nbsp;&nbsp;
+      <span>Cadastrar Recebedor</span>
+    </li>
+    <li class="cursor-pointer" (click)="showSidebar = false">
+      <fa-icon [icon]="icons.syringe" size="lg"></fa-icon>&nbsp;&nbsp;&nbsp;&nbsp;
+      <span>Estoque</span>
+    </li>
+    <li class="cursor-pointer" (click)="showSidebar = false">
+      <fa-icon [icon]="icons.chart" size="lg"></fa-icon>&nbsp;&nbsp;&nbsp;&nbsp;
+      <span>Estatísticas</span>
+    </li>
+  </ul>
+</aside>
+
+<main [ngClass]="{ 'active': showSidebar }">
+  <div class="container pt-3">
+    <router-outlet></router-outlet>
+  </div>
+</main>

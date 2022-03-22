@@ -1,0 +1,20 @@
+<div>
+    <label>
+        <ng-content></ng-content>
+    </label>
+
+    <select *ngIf="options?.length; else actualInput" [value]="value" [formControl]="control">
+        <option *ngFor="let opt of options" [value]="opt.value">{{ opt.name }}</option>
+    </select>
+
+    <ng-template #actualInput>
+        <input 
+            autocomplete="off"
+            [type]="type" 
+            [placeholder]="placeholder" 
+            [value]="value" 
+            [formControl]="control"
+            (input)="onInput($event)">
+    </ng-template>
+    
+</div>
