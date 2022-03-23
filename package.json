@@ -7,8 +7,9 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "config": "node ./config-env.js",
-    "heroku-postbuild": "npm run build --prod && npm run config"
+    "config": "node ./server.js",
+    "prod-build": "ng build --configuration production --aot --vendor-chunk --common-chunk --delete-output-path",
+    "heroku-postbuild": "npm run prod-build && npm run config"
   },
   "private": true,
   "dependencies": {
