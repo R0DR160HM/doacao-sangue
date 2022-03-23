@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "config": "node ./config-env.js",
-    "heroku-postbuild": "ng build --prod --aot && npm run config"
+    "heroku-postbuild": "npm run build --prod && npm run config"
   },
   "private": true,
   "dependencies": {
