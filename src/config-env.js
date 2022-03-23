@@ -9,9 +9,6 @@ function getEnvironmentVariable(key, _default = '') {
 
 const envConfigFile = `export const environment = {
   "production": true,
-  "googleCx": "${getEnvironmentVariable('GOOGLE_CX')}",
-  "googleKey": "${getEnvironmentVariable('GOOGLE_KEY')}",
-  "discordKey": "${getEnvironmentVariable('DISCORD_KEY')}"
 }
 `;
 
