@@ -26,14 +26,14 @@ export class ReceiveComponent implements OnInit {
   public bloodTypes = [
     { name: '', value: undefined },
     { name: 'A+', value: BloodType.A_Positive },
-    { name: 'A-', value: BloodType.A_Negative },
     { name: 'B+', value: BloodType.B_Positive },
-    { name: 'B-', value: BloodType.B_Negative },
     { name: 'AB+', value: BloodType.AB_Positive },
-    { name: 'AB-', value: BloodType.AB_Negative },
     { name: 'O+', value: BloodType.O_Positive },
+    { name: 'A-', value: BloodType.A_Negative },
+    { name: 'B-', value: BloodType.B_Negative },
+    { name: 'AB-', value: BloodType.AB_Negative },
     { name: 'O-', value: BloodType.O_Negative },
-  ]
+  ];
 
   constructor(
     private dao: DonatorDAO
@@ -68,12 +68,25 @@ export class ReceiveComponent implements OnInit {
   private findAdequateBlood() {
     this.dao.findAdequateBlood(this.type.value).subscribe(result => {
       this.donations = result;
+      console.log(this.donations);
       this.totalDonated = result.reduce((a, b) => a + b);
     })
   }
 
   public getPercentage(index: number) {
     return ((100 / this.totalDonated) * this.donations[index]).toFixed(2);
+  }
+
+  public remove() {
+    if (this.totalNeeded.value > this.totalDonated) {
+      const reduce = confirm(`Infelizmente, nosso banco não possui ${this.totalNeeded.value}ml de sangue disponivel, gostaria de alterar o valor para ${this.totalDonated}?`)
+      if (reduce) {
+        this.totalNeeded.setValue(this.totalDonated);
+      } else {
+        return;
+      }
+    }
+    
   }
 
 }
