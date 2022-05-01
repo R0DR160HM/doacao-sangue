@@ -9,13 +9,19 @@ import { RegisterComponent } from './pages/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputComponent } from './shared/components/input/input.component';
 import { ReceiveComponent } from './pages/receive/receive.component';
+import { StorageComponent } from './pages/storage/storage.component';
+import { StatisticComponent } from './pages/statistic/statistic.component';
+import { RobotComponent } from './pages/robot/robot.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     InputComponent,
-    ReceiveComponent
+    ReceiveComponent,
+    StorageComponent,
+    StatisticComponent,
+    RobotComponent,
   ],
   imports: [
     BrowserModule,

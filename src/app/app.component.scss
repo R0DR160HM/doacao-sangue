@@ -59,6 +59,7 @@ main {
         width: calc(100vw - $side-width);
         left: $side-width;
     }
+    overflow: auto;
 }
 
 ul {

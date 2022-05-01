@@ -1,0 +1,8 @@
+<h2>Estoque</h2>
+
+<div class="container mt-3">
+    <div class="row border p-2 text-center" *ngFor="let col of storage$ | async; let i = index">
+        <div class="col">{{ types[i] }}</div>
+        <div class="col">{{ col / 1000 }}L</div>
+    </div>
+</div>

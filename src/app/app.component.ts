@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { faBars, faUserInjured, faUserPlus, faSyringe, faChartLine } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faUserInjured, faUserPlus, faSyringe, faChartLine, faRobot } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +16,8 @@ export class AppComponent implements OnInit {
     userPlus: faUserPlus,
     userInjured: faUserInjured,
     syringe: faSyringe,
-    chart: faChartLine
+    chart: faChartLine,
+    robot: faRobot
   }
 
   constructor(

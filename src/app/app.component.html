@@ -17,19 +17,23 @@
       <fa-icon [icon]="icons.userInjured" size="lg"></fa-icon>&nbsp;&nbsp;&nbsp;&nbsp;
       <span>Cadastrar Recebedor</span>
     </li>
-    <li class="cursor-pointer" (click)="showSidebar = false">
+    <li class="cursor-pointer" (click)="navigate('estoque')">
       <fa-icon [icon]="icons.syringe" size="lg"></fa-icon>&nbsp;&nbsp;&nbsp;&nbsp;
       <span>Estoque</span>
     </li>
-    <li class="cursor-pointer" (click)="showSidebar = false">
+    <li class="cursor-pointer" (click)="navigate('estatisticas')">
       <fa-icon [icon]="icons.chart" size="lg"></fa-icon>&nbsp;&nbsp;&nbsp;&nbsp;
       <span>Estatísticas</span>
+    </li>
+    <li class="cursor-pointer" (click)="navigate('automacao')">
+      <fa-icon [icon]="icons.robot" size="lg"></fa-icon>&nbsp;&nbsp;&nbsp;&nbsp;
+      <span>Popular Tabela</span>
     </li>
   </ul>
 </aside>
 
 <main [ngClass]="{ 'active': showSidebar }">
-  <div class="container pt-3">
+<div class="container pt-3">
     <router-outlet></router-outlet>
   </div>
 </main>

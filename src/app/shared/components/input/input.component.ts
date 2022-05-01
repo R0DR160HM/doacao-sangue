@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { AbstractControl, FormControl } from '@angular/forms';
 
 @Component({
@@ -6,7 +6,7 @@ import { AbstractControl, FormControl } from '@angular/forms';
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss']
 })
-export class InputComponent implements OnInit {
+export class InputComponent implements OnInit, OnChanges {
 
   @Input()
   public type: 'text' | 'email' | 'password' | 'textarea' | 'number' | '' = 'text';
@@ -23,12 +23,25 @@ export class InputComponent implements OnInit {
   @Input()
   public options: { name: string, value: any }[] = [];
 
+  @Input()
+  public disabled = false;
+
   @Output()
   public input = new EventEmitter();
 
   constructor() { }
 
+  ngOnChanges(): void {
+    if (this.disabled) {
+      this.control.disable();
+    }
+  }
+
   ngOnInit(): void {
+    this.ngOnChanges();
+    if (this.value) {
+      this.control.setValue(this.value);
+    }
   }
 
   public onInput(data: any) {

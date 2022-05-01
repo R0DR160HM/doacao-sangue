@@ -62,10 +62,26 @@ export class DonatorDAO {
     public findAdequateBlood(bloodType: BloodType) {
         return this.getDonations(bloodType)
         .pipe(map(donators => {
-            const bloodReserves = [0, 0, 0, 0, 0, 0, 0];
-            donators.forEach(don => bloodReserves[don.type] += (+ don.totalDonated));
+            const bloodReserves = [0, 0, 0, 0, 0, 0, 0, 0];
+            donators.forEach(don => bloodReserves[+ don.type.toString()] += (+ don.totalDonated));
             return bloodReserves; // as any as { [key in BloodType]: number };
         }));
+    }
+    
+    public fullStorage() {
+        return this.getAll()
+        .pipe(map(donations => {
+            const bloodReserves = [0, 0, 0, 0, 0, 0, 0, 0];
+            let total = 0;
+            donations.forEach(don => {
+                const type = +don.type.toString()
+                const donated = +don.totalDonated.toString();
+                bloodReserves[type] += donated;
+                total += donated;
+            });
+            bloodReserves.push(total)
+            return bloodReserves
+        }))
     }
 
     public receive(amount: number, type: BloodType) {

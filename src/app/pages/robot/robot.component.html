@@ -1,0 +1,27 @@
+<h2>Popular tabela <b>Automaticamente</b></h2>
+
+<form class="mt-3">
+    <app-input type="number" [control]="control" (input)="onInput()">Número de registros:</app-input>
+
+    <div class="mt-2" *ngIf="data.length">
+        <div class="row p-2" *ngFor="let col of data">
+            <div class="col">
+                <app-input [disabled]="true" [value]="col.name">Nome</app-input>
+            </div>
+            <div class="col">
+                <app-input [disabled]="true" [value]="types[col.type]">Tipo</app-input>
+            </div>
+            <div class="col">
+                <app-input [disabled]="true" [value]="col.totalDonated + ''">Total Doado (ml)</app-input>
+            </div>
+        </div>
+    </div>
+
+    <div class="w-100 text-center p-3" *ngIf="data.length">
+        <button class="btn btn-primary" (click)="confirm()">Confirmar</button>
+    </div>
+</form>
+
+<section class="mt-5" *ngIf="success">
+    <h3 class="text-success">Doações cadastrada com sucesso!</h3>
+</section>
